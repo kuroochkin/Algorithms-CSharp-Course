@@ -26,6 +26,21 @@ namespace Algorithms_DataStruct_Lib
             }
         }
 
+        public static void SelectionSort(int[] array)
+        {
+            for(int partIndex = array.Length - 1; partIndex > 0; partIndex--)
+            {
+                int largest = 0;
+
+                for (int i = 1; i <= partIndex; i++)
+                {
+                    if (array[largest] < array[i])
+                        largest = i;
+                }   
+                Swap(array, largest, partIndex);
+            }
+        }
+
 
         // Вспомогательный метод перестановки двух индексов
         private static void Swap(int[] array, int i, int j)
