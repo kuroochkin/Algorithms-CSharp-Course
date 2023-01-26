@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32819.101
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithms-CSharp-Course", "Algorithms-CSharp-Course\Algorithms-CSharp-Course.csproj", "{6426C8BB-AB20-4E8D-8B9E-3DE1F7EBEC67}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Algorithms-CSharp-Course", "Algorithms-CSharp-Course\Algorithms-CSharp-Course.csproj", "{6426C8BB-AB20-4E8D-8B9E-3DE1F7EBEC67}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithms-DataStruct-Lib", "Algorithms-DataStruct-Lib\Algorithms-DataStruct-Lib.csproj", "{5ABF7A34-FE66-43F0-BCA4-4C082ED5BFD2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Algorithms-DataStruct-Lib", "Algorithms-DataStruct-Lib\Algorithms-DataStruct-Lib.csproj", "{5ABF7A34-FE66-43F0-BCA4-4C082ED5BFD2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithms-DataStruct-Lib.Tests", "Algorithms-DataStruct-Lib.Tests\Algorithms-DataStruct-Lib.Tests.csproj", "{475CD0AD-B705-4472-88B8-69C162828628}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{5ABF7A34-FE66-43F0-BCA4-4C082ED5BFD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5ABF7A34-FE66-43F0-BCA4-4C082ED5BFD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5ABF7A34-FE66-43F0-BCA4-4C082ED5BFD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{475CD0AD-B705-4472-88B8-69C162828628}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{475CD0AD-B705-4472-88B8-69C162828628}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{475CD0AD-B705-4472-88B8-69C162828628}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{475CD0AD-B705-4472-88B8-69C162828628}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

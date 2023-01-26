@@ -2,16 +2,24 @@
 using Algorithms_DataStruct_Lib;
 using System.Diagnostics;
 
-var ints = In.ReadInts("kkk.txt").ToArray();
+
+int[] arr = new int[] { 4, 3, 8, 1, 5 , -5, -10, 12};
+
+var sort = new Sorting();
+
 
 var watch = new Stopwatch();
 watch.Start();
 
-var triplets = ThreeSum.Count(ints);
+sort.BubbleSort(arr);
 
 watch.Stop();
 
-Console.WriteLine($"Количество триплетов равных нулю: {triplets}");
+for(int i = 0; i < arr.Length; i++)
+{
+    Console.WriteLine(arr[i] + " ");
+}
+
 Console.WriteLine($"Время выполнения: {watch.Elapsed:g}");
 
 Console.Read();
