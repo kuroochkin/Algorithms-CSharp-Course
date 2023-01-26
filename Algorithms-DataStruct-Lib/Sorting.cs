@@ -11,7 +11,7 @@ namespace Algorithms_DataStruct_Lib
         // Использует малое кол-во памяти ("In-place" алгоритм)
         // Стабильный
         // Квадратичная сложность (быстрая деградация)
-        public void BubbleSort(int[] array)
+        public static void BubbleSort(int[] array)
         {
             for(int i = 0; i < array.Length; i++)
             {
@@ -26,7 +26,7 @@ namespace Algorithms_DataStruct_Lib
         }
 
         // Вспомогательный метод перестановки двух индексов
-        private void Swap(int[] array, int i, int j)
+        private static void Swap(int[] array, int i, int j)
         {
             if (i == j)
                 return;

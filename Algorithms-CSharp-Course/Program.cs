@@ -11,7 +11,7 @@ var sort = new Sorting();
 var watch = new Stopwatch();
 watch.Start();
 
-sort.BubbleSort(arr);
+Sorting.BubbleSort(arr);
 
 watch.Stop();
 
