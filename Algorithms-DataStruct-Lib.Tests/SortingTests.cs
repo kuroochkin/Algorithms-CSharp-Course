@@ -48,10 +48,17 @@ namespace Algorithms_DataStruct_Lib.Tests
         }
 
         [Test]
-        public void SelectionSort_ValidInput_SortedInput()
+        public void SelectionSort_ValidInput_SortedOutput()
         {
             RunTestsForSortAlgorithms(Sorting.SelectionSort);
         }
+
+        [Test]
+        public void InsertionSort_ValidInput_SortedOutput()
+        {
+            RunTestsForSortAlgorithms(Sorting.InsertionSort);
+        }
+
 
 
     }

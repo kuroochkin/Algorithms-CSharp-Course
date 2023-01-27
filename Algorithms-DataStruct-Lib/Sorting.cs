@@ -8,10 +8,10 @@ namespace Algorithms_DataStruct_Lib
 {
     public class Sorting
     {
+        // Пузырьковая сортировка
         // Использует малое кол-во памяти("In-place" алгоритм)
         // Стабильный
-        //Квадратичная сложность(быстрая деградация)
-
+        // Квадратичная сложность(быстрая деградация)
         public static void BubbleSort(int[] array)
         {
             for (int i = 0; i < array.Length; i++)
@@ -38,6 +38,24 @@ namespace Algorithms_DataStruct_Lib
                         largest = i;
                 }   
                 Swap(array, largest, partIndex);
+            }
+        }
+
+        // Сортировка вставками
+        // Использует малое кол-во памяти("In-place" алгоритм)
+        // Cтабильный
+        // Квадратичная сложность(быстрая деградация)
+        public static void InsertionSort(int[] array)
+        {
+            for(int partIndex = 1; partIndex < array.Length; partIndex++)
+            {
+                int curUnsorted = array[partIndex];
+                int i = 0;
+                for(i = partIndex; i > 0 && array[i - 1] > curUnsorted; i--)
+                {
+                    array[i] = array[i - 1];
+                }
+                array[i] = curUnsorted;
             }
         }
 
