@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -45,6 +46,7 @@ namespace Algorithms_DataStruct_Lib
         // Использует малое кол-во памяти("In-place" алгоритм)
         // Cтабильный
         // Квадратичная сложность(быстрая деградация)
+        // Эффективна на уже почти отсортированном входном массиве
         public static void InsertionSort(int[] array)
         {
             for(int partIndex = 1; partIndex < array.Length; partIndex++)
@@ -59,6 +61,32 @@ namespace Algorithms_DataStruct_Lib
             }
         }
 
+        // Основан на сортировке вставками 
+        // Идея алгоритма = предварительно отсортировать 
+        // Когда gap = 1, процесс переключается на сортировку вставками
+        // Использует малое кол-во памяти("In-place" алгоритм)
+        // Нестабильный
+        // O(N^(3/2))
+        public static void ShellSort(int[] array)
+        {
+            int gap = 1;
+            while (gap < array.Length)
+                gap = 3 * gap + 1;
+
+            while(gap >=1)
+            {
+                for(int i = gap; i < array.Length; i++)
+                {
+                    for (int j = i; j >= gap && array[j]< array[j - gap]; j -= gap)
+                    {
+                        Swap(array, j, j - gap);
+                    }
+
+                }
+                gap /= 3;
+            }
+
+        }
 
         // Вспомогательный метод перестановки двух индексов
         private static void Swap(int[] array, int i, int j)

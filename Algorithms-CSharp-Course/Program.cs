@@ -11,14 +11,11 @@ var sort = new Sorting();
 var watch = new Stopwatch();
 watch.Start();
 
-Sorting.SelectionSort(arr);
+Console.WriteLine("---");
 
 watch.Stop();
 
-for(int i = 0; i < arr.Length; i++)
-{
-    Console.WriteLine(arr[i] + " ");
-}
+
 
 Console.WriteLine($"Время выполнения: {watch.Elapsed:g}");
 
