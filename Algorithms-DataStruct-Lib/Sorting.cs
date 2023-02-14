@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
@@ -30,7 +31,7 @@ namespace Algorithms_DataStruct_Lib
 
         public static void SelectionSort(int[] array)
         {
-            for(int partIndex = array.Length - 1; partIndex > 0; partIndex--)
+            for (int partIndex = array.Length - 1; partIndex > 0; partIndex--)
             {
                 int largest = 0;
 
@@ -38,7 +39,7 @@ namespace Algorithms_DataStruct_Lib
                 {
                     if (array[largest] < array[i])
                         largest = i;
-                }   
+                }
                 Swap(array, largest, partIndex);
             }
         }
@@ -50,11 +51,11 @@ namespace Algorithms_DataStruct_Lib
         // Эффективна на уже почти отсортированном входном массиве
         public static void InsertionSort(int[] array)
         {
-            for(int partIndex = 1; partIndex < array.Length; partIndex++)
+            for (int partIndex = 1; partIndex < array.Length; partIndex++)
             {
                 int curUnsorted = array[partIndex];
                 int i = 0;
-                for(i = partIndex; i > 0 && array[i - 1] > curUnsorted; i--)
+                for (i = partIndex; i > 0 && array[i - 1] > curUnsorted; i--)
                 {
                     array[i] = array[i - 1];
                 }
@@ -74,11 +75,11 @@ namespace Algorithms_DataStruct_Lib
             while (gap < array.Length)
                 gap = 3 * gap + 1;
 
-            while(gap >=1)
+            while (gap >= 1)
             {
-                for(int i = gap; i < array.Length; i++)
+                for (int i = gap; i < array.Length; i++)
                 {
-                    for (int j = i; j >= gap && array[j]< array[j - gap]; j -= gap)
+                    for (int j = i; j >= gap && array[j] < array[j - gap]; j -= gap)
                     {
                         Swap(array, j, j - gap);
                     }
@@ -94,19 +95,19 @@ namespace Algorithms_DataStruct_Lib
         // Линейно-логарифмическая сложность (хорошая)
         public static void MergeSort(int[] array)
         {
-            int[] aux = new int[array.Length];
+            int[] aux = new int[array.Length]; // вспомогательный массив
             Sort(0, array.Length - 1);
 
             void Sort(int low, int high)
             {
                 if (high <= low)
                     return;
-                int mid = (high + low) / 2;
-                Sort(low, mid);
-                Sort(mid+1, high);
+                int mid = (high + low) / 2; //середина массива
+                Sort(low, mid); // рекурсия (делим до сиплингов)
+                Sort(mid + 1, high);
                 Merge(low, mid, high);
             }
-            
+
             void Merge(int low, int mid, int high)
             {
                 int i = low;
@@ -114,11 +115,11 @@ namespace Algorithms_DataStruct_Lib
 
                 Array.Copy(array, low, aux, low, high - low + 1);
 
-                for(int k = low; k <= high; k++)
+                for (int k = low; k <= high; k++)
                 {
                     if (i > mid)
                         array[k] = aux[j++];
-                    else if(j > high)
+                    else if (j > high)
                         array[k] = aux[i++];
                     else if (aux[j] < aux[i])
                         array[k] = aux[j++];
@@ -137,6 +138,58 @@ namespace Algorithms_DataStruct_Lib
             int temp = array[i];
             array[i] = array[j];
             array[j] = temp;
+        }
+
+        // Разделяй и властвуй
+        // Разделение базируется на выборе опорных элементов
+        // Опорный элемент находит свое место в конце каждого прохода
+        // In-place алгоритм
+        // Линейно-логарифмическая сложность 
+        // Но может быть и N^2 (в редком случае)
+        // Нестабильный
+        public static void QuickSort(int[] array)
+        {
+            Sort(0, array.Length - 1);
+
+            void Sort(int low, int high)
+            {
+                if (low >= high)
+                    return;
+                int j = Partition(low, high);
+                Sort(low, j - 1);
+                Sort(j + 1, high);
+            }
+
+            int Partition(int low, int high)
+            {
+                int i = low;
+                int j = high + 1;
+
+                int pivot = array[low]; // опорный элемент
+
+                while (true)
+                {
+                    while (array[++i] < pivot)
+                    {
+                        if (i == high)
+                            break;
+                    }
+
+                    while (pivot < array[--j])
+                    {
+                        if (j == low)
+                            break;
+                    }
+
+                    if (i >= j)
+                        break;
+
+                    Swap(array, i, j);
+                }
+
+                Swap(array, low, j);
+                return j;
+            }
         }
     }
 }
